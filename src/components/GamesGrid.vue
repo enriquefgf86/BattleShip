@@ -670,13 +670,14 @@ export default {
             this.dialogShotAllready = true;
             this.fireSound1(require("@/assets/banned.mp3"));
             console.log("Sorry you already shot to these coordenates");
-          } else if (this.shootToPositions.includes(cell)) {
+          } else{ if (this.shootToPositions.includes(cell)) {
               this.shootToPositions.splice(this.shootToPositions.indexOf(cell),1 );
               document.getElementById(cell + "Salvoes").classList.remove("shots");
-            } else {
+            } 
+            else {
               this.shootToPositions.push(cell);
               document.getElementById(cell + "Salvoes").classList.add("shots");
-            }
+            }}
           
          }else {
           console.log("User not identified");
