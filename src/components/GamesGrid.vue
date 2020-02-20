@@ -665,7 +665,7 @@ export default {
       if (document.getElementById(cell + "Salvoes").id.length > 8) {
         ////este length mayor que 8 es la sumatoria de la primera letra y la palabra salvos
        
-
+       if(this.shootToPositions.length<=5){
         if (this.getUserLogged != null || this.getUserLogged != undefined) {
           if (
             document
@@ -692,6 +692,10 @@ export default {
         } else {
           console.log("User not identified");
         }
+       }else{
+         this.dialogWrongTarget = true;
+         this.fireSound1(require("@/assets/banned.mp3"));
+       } 
       } else {
         this.dialogWrongTarget = true;
         this.fireSound1(require("@/assets/banned.mp3"));
