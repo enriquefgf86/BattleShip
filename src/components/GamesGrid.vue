@@ -687,7 +687,7 @@ export default {
         }
 
         
-      } else {
+      } else if(this.shootToPositions.length == 5) {
         this.dialogWrongTarget = true;
         this.fireSound1(require("@/assets/banned.mp3"));
       }
