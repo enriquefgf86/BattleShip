@@ -763,7 +763,7 @@ export default {
         clearInterval(this.fetchInterval);
       }
 
-      if (this.shootToPositions.length <= 5) {
+      if (this.shootToPositions.length <5) {
             this.shootToPositions
         }else{
           this.dialogWrongTarget = true;
