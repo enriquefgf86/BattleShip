@@ -668,6 +668,27 @@ export default {
        if(this.shootToPositions.length>5){
          this.dialogWrongTarget = true;
          this.fireSound1(require("@/assets/banned.mp3"));
+         if (
+            document
+              .getElementById(cell + "Salvoes")
+              .classList.contains("missSalvos")
+          ) {
+            this.dialogShotAllready = true;
+            this.fireSound1(require("@/assets/banned.mp3"));
+            console.log("Sorry you already shot to these coordenates");
+          } else {
+            if (this.shootToPositions.includes(cell)) {
+              this.shootToPositions.splice(
+                this.shootToPositions.indexOf(cell),
+                1
+              );
+              document
+                .getElementById(cell + "Salvoes")
+                .classList.remove("shots");
+            } else {
+              this.shootToPositions.push(cell);
+              document.getElementById(cell + "Salvoes").classList.add("shots");
+            }}
        }else{
         if (this.getUserLogged != null || this.getUserLogged != undefined && this.shootToPositions.length<5) {
           if (
