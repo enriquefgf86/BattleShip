@@ -664,33 +664,9 @@ export default {
     triggerer(cell) {
       if (document.getElementById(cell + "Salvoes").id.length > 8) {
         ////este length mayor que 8 es la sumatoria de la primera letra y la palabra salvos
-       //condicion para los disparos no mas de cinco
-       if(this.shootToPositions.length>5){
-         this.dialogWrongTarget = true;
-         this.fireSound1(require("@/assets/banned.mp3"));
-         if (
-            document
-              .getElementById(cell + "Salvoes")
-              .classList.contains("missSalvos")
-          ) {
-            this.dialogShotAllready = true;
-            this.fireSound1(require("@/assets/banned.mp3"));
-            console.log("Sorry you already shot to these coordenates");
-          } else {
-            if (this.shootToPositions.includes(cell)) {
-              this.shootToPositions.splice(
-                this.shootToPositions.indexOf(cell),
-                1
-              );
-              document
-                .getElementById(cell + "Salvoes")
-                .classList.remove("shots");
-            } else {
-              this.shootToPositions.push(cell);
-              document.getElementById(cell + "Salvoes").classList.add("shots");
-            }}
-       }else{
-        if (this.getUserLogged != null || this.getUserLogged != undefined && this.shootToPositions.length<5) {
+        
+
+        if (this.getUserLogged != null || this.getUserLogged != undefined) {
           if (
             document
               .getElementById(cell + "Salvoes")
@@ -716,7 +692,6 @@ export default {
         } else {
           console.log("User not identified");
         }
-       }
       } else {
         this.dialogWrongTarget = true;
         this.fireSound1(require("@/assets/banned.mp3"));
@@ -787,6 +762,13 @@ export default {
       ) {
         clearInterval(this.fetchInterval);
       }
+
+      if (this.shootToPositions.length <= 5) {
+            this.shootToPositions
+        }else{
+          this.dialogWrongTarget = true;
+        this.fireSound1(require("@/assets/banned.mp3"));
+        }
 
       setTimeout(() => {
         for (let i = 0; i < this.getGamePlayerId.ship.length; i++) {
