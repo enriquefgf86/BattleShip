@@ -1,9 +1,8 @@
 <template>
   <v-container class="all">
-    
     <v-container>
       <div v-if="getGamePlayerId.length != 0">
-<!--------------------------------------container with players in game------------------------------>        
+        <!--------------------------------------container with players in game------------------------------>
         <v-container fluid style="width:1400px">
           <div class="infbox">
             <div>
@@ -12,7 +11,7 @@
               </div>
             </div>
             <span style="margin-left:470px " class="vs">
-              <h2 class="toolbar" style='position:absolute;margin-left:-35px'>VS</h2>
+              <h2 class="toolbar" style="position:absolute;margin-left:-35px">VS</h2>
             </span>
           </div>
           <div
@@ -27,48 +26,50 @@
             <h2 class="toolbar">Waiting For Opponent In Game</h2>
           </div>
         </v-container>
-<!--------------------------------------container to show when game ends--------------------------------------------------->
+        <!--------------------------------------container to show when game ends--------------------------------------------------->
         <v-spacer />
         <v-spacer />
         <v-spacer />
         <v-spacer />
 
         <div v-if='getGamePlayerId.status.state=="Win "'>
-         {{fireSound(require('../assets/winnerGiggle.mp3'))}}
-          <img class='imgState' src='../assets/winner.webp'>
-          <h1 class='state'>
-            You Win....well done Homie!!!
-          </h1>
-          <router-link to="/">
-            <div >
-              <v-img  class="homy" style="z-index:1;margin-left:690px" src="../assets/homy.png" />
-            </div>
-          </router-link>
-        </div>
-
-        <div v-else-if='getGamePlayerId.status.state=="Game Over"'>
-            {{fireSound(require('../assets/loserCrying.mp3'))}}
-          <img class='imgState' src='../assets/loser.gif'>
-          <h1 class='state'>
-            You have Lost......Loooooooooser!!!!!
-          </h1>
-          <router-link to="/">
-            <div >
-              <v-img  class="homy" style="z-index:1;margin-left:690px" src="../assets/homy.png" />
-            </div>
-          </router-link>
-        </div>
-
-        <div v-else-if='getGamePlayerId.status.state=="Draw"'>
-          <img class='imgState' src='../assets/noWinners.gif'>
-          <h1 class='state'>Congrats Soldiers...Good Battle....No Winners!!!</h1>
+          {{fireSound(require('../assets/winnerGiggle.mp3'))}}
+          <img
+            class="imgState"
+            src="../assets/winner.webp"
+          />
+          <h1 class="state">You Win....well done Homie!!!</h1>
           <router-link to="/">
             <div>
               <v-img class="homy" style="z-index:1;margin-left:690px" src="../assets/homy.png" />
             </div>
           </router-link>
         </div>
-<!--------------------------------------container to show if game hasn't ended--------------------------------------------------->
+
+        <div v-else-if='getGamePlayerId.status.state=="Game Over"'>
+          {{fireSound(require('../assets/loserCrying.mp3'))}}
+          <img
+            class="imgState"
+            src="../assets/loser.gif"
+          />
+          <h1 class="state">You have Lost......Loooooooooser!!!!!</h1>
+          <router-link to="/">
+            <div>
+              <v-img class="homy" style="z-index:1;margin-left:690px" src="../assets/homy.png" />
+            </div>
+          </router-link>
+        </div>
+
+        <div v-else-if='getGamePlayerId.status.state=="Draw"'>
+          <img class="imgState" src="../assets/noWinners.gif" />
+          <h1 class="state">Congrats Soldiers...Good Battle....No Winners!!!</h1>
+          <router-link to="/">
+            <div>
+              <v-img class="homy" style="z-index:1;margin-left:690px" src="../assets/homy.png" />
+            </div>
+          </router-link>
+        </div>
+        <!--------------------------------------container to show if game hasn't ended--------------------------------------------------->
         <div v-else>
           <div class="containerX">
             <v-container fluid style="width :100px;position:absolute">
@@ -80,12 +81,18 @@
                   <template v-slot:activator="{ on: menu }">
                     <v-tooltip top>
                       <template v-slot:activator="{ on: tooltip }">
-                        <v-btn  large color="#FF5252" style='font-family:cursive;' dark v-on="{ ...tooltip, ...menu }">Battle Log</v-btn>
+                        <v-btn
+                          large
+                          color="#FF5252"
+                          style="font-family:cursive;"
+                          dark
+                          v-on="{ ...tooltip, ...menu }"
+                        >Battle Log</v-btn>
                       </template>
                     </v-tooltip>
                   </template>
                   <v-list>
-                    <v-list-item  v-for="(salvos, index) in getGamePlayerId.mySalvo" :key="index">
+                    <v-list-item v-for="(salvos, index) in getGamePlayerId.mySalvo" :key="index">
                       <v-list-item-title style="font-size:10px">Turn:{{ salvos.turn }}</v-list-item-title>
                       <v-list-item-title
                         style="font-size:10px"
@@ -98,14 +105,14 @@
               </v-app>
             </v-container>
             <!---------------------containers of turn per shoot----------------------->
-          <div  v-if='getGamePlayerId.mySalvo.length' class ='myTurnshots'>
-                <h3>Your Turn</h3>
-                <h3>{{getGamePlayerId.mySalvo.length}}</h3>
-          </div>
-          <div  v-if='getGamePlayerId.mySalvo.length' class ='myTurnshotsOpp'>
-                 <h3>Opponent's Turn</h3>
-                <h3>{{getGamePlayerId.oppSalvo.length}}</h3>
-          </div>
+            <div v-if="getGamePlayerId.mySalvo.length" class="myTurnshots">
+              <h3>Your Turn</h3>
+              <h3>{{getGamePlayerId.mySalvo.length}}</h3>
+            </div>
+            <div v-if="getGamePlayerId.mySalvo.length" class="myTurnshotsOpp">
+              <h3>Opponent's Turn</h3>
+              <h3>{{getGamePlayerId.oppSalvo.length}}</h3>
+            </div>
 
             <!---------------------hoome button in image------------------------------>
             <router-link to="/">
@@ -135,7 +142,7 @@
               <!---------------------sunk ships log container------------------------------>
               <div class="boxShipsStatus">
                 <div>
-                  <h6 style="font-size:12px;font-family:cursive;" class='toolbar'>Destroyed Ships</h6>
+                  <h6 style="font-size:12px;font-family:cursive;" class="toolbar">Destroyed Ships</h6>
                   <tr v-for="(ships,index) in destroyedShipBox" :key="index">
                     <div class="detrShipsContainer">
                       <td style="font-size:14px">{{ships}}</td>
@@ -176,7 +183,7 @@
           <div class="text-center">
             <v-dialog v-model="dialog" hide-overlay persistent width="300">
               <v-card color="#FF5252" dark>
-                <v-img src='../assets/nonono.webp' alt='no'/>
+                <v-img src="../assets/nonono.webp" alt="no" />
                 <v-card-text>
                   Careful , dont crash with your own crew!!!
                   <v-progress-linear indeterminate color="white" class="mb-0"></v-progress-linear>
@@ -188,7 +195,7 @@
           <div class="text-center">
             <v-dialog v-model="dialogWrongTarget" hide-overlay persistent width="300">
               <v-card color="#FF5252" dark>
-                <v-img src='../assets/nonono.webp' alt='no'/>
+                <v-img src="../assets/nonono.webp" alt="no" />
                 <v-card-text>
                   You can't shoot over this area is banned!!!
                   <v-progress-linear indeterminate color="white" class="mb-0"></v-progress-linear>
@@ -200,7 +207,7 @@
           <div class="text-center">
             <v-dialog v-model="dialogNotGood" hide-overlay persistent width="300">
               <v-card color="#FF5252" dark>
-                <v-img src='../assets/notGood.gif' alt='no'/>
+                <v-img src="../assets/notGood.gif" alt="no" />
                 <v-card-text>
                   You can't move a ship....is an order!!!d!!!
                   <v-progress-linear indeterminate color="white" class="mb-0"></v-progress-linear>
@@ -328,8 +335,8 @@
                 <div v-else>
                   <div
                     class="upper"
-                    :disabled="shootToPositions.length!=5||getGamePlayerId.status.state=='Waiting for opponent in game'||
-            getGamePlayerId.status.state=='Welcome to game,Waiting for opponent to place ships'||getGamePlayerId.oppSalvo.length<getGamePlayerId.mySalvo.length"
+                    :disabled='shootToPositions.length!=5||getGamePlayerId.status.state=="Waiting for opponent in game"||
+            getGamePlayerId.status.state=="Welcome to game,Waiting for opponent to place ships"||getGamePlayerId.oppSalvo.length<getGamePlayerId.mySalvo.length'
                     @click="putSalvos"
                     @click.prevent="fireSound(require('@/assets/firemissile.mp3'))"
                   >
@@ -360,48 +367,66 @@
 import { mapGetters, mapActions, mapMutations, mapState } from "vuex";
 export default {
   name: "GamesGrid",
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////
   props: ["gamePlayerId", "id"],
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////
   data() {
     return {
       dialog: false,
-      dialogWrongTarget:false,
-      dialogNotGood:false,
+      dialogWrongTarget: false,
+      dialogNotGood: false,
       dialogMissile: false,
-      dialogShotAllready: false,///////para los diferentes v-dialogs que surjen por movimientos incorrectos
+      dialogShotAllready: false, ///////para los diferentes v-dialogs que surjen por movimientos incorrectos
 
-      draggable:true,
+      draggable: true,
       positionShips: [],
       opponentShots: [],
 
-      destroyedShipBox: [],//////para el log de las naves destruidas
+      destroyedShipBox: [], //////para el log de las naves destruidas
 
-      destroyedShipBoximages: [///////para el loop sobre las imgagenes aponer en el destroyed shipBox
-        {type: "PatrolBoat", src: require("../assets/patrolBoatHorizontalView.png")},
-        {type: "Submarine",src: require("../assets/submarineHorizontalView.png")},
-        {type: "BattleShip",src: require("../assets/battleshipHorizontalView.png")},
-        {type: "Carrier",src: require("../assets/carrierHorizontalView.png")},
-        {type: "Destroyer",src: require("../assets/destroyerHorizontalView.png")}
+      destroyedShipBoximages: [
+        ///////para el loop sobre las imgagenes aponer en el destroyed shipBox
+        {
+          type: "PatrolBoat",
+          src: require("../assets/patrolBoatHorizontalView.png")
+        },
+        {
+          type: "Submarine",
+          src: require("../assets/submarineHorizontalView.png")
+        },
+        {
+          type: "BattleShip",
+          src: require("../assets/battleshipHorizontalView.png")
+        },
+        {
+          type: "Carrier",
+          src: require("../assets/carrierHorizontalView.png")
+        },
+        {
+          type: "Destroyer",
+          src: require("../assets/destroyerHorizontalView.png")
+        }
       ],
 
       currentShipPosition: [],
 
-      fetchInterval: null,////////timer para el watcher de los set intervals
-      
-      counter: 0,////////counter para el drawship y el orientation contando en dependencia de la funcion
+      fetchInterval: null, ////////timer para el watcher de los set intervals
+
+      counter: 0, ////////counter para el drawship y el orientation contando en dependencia de la funcion
 
       myArrayEx: [],
 
-      shipOrientations: { /////objetos del determinando el orientation del ship segun la imagen
+      shipOrientations: {
+        /////objetos del determinando el orientation del ship segun la imagen
         Destroyer: true,
         PatrolBoat: true,
         Submarine: true,
         BattleShip: true,
         Carrier: true
       },
-      
-      shipsToSendBackEnd: [ /////objetos que se envia al backend con las naves previamente ya puestas 
+
+      shipsToSendBackEnd: [
+        /////objetos que se envia al backend con las naves previamente ya puestas
         { typeShip: "Destroyer", shipPositions: [] },
         { typeShip: "Submarine", shipPositions: [] },
         { typeShip: "PatrolBoat", shipPositions: [] },
@@ -409,11 +434,11 @@ export default {
         { typeShip: "BattleShip", shipPositions: [] }
       ],
 
-      shootToPositions: [],/////array en donde se almacenan los disparos hechos para despues enviarse al backend
+      shootToPositions: [], /////array en donde se almacenan los disparos hechos para despues enviarse al backend
 
       rows: ["", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      columns: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]//arrays para conformar los grids en donde se
-                                                                  ///posicionaran las naves y salvos
+      columns: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"] //arrays para conformar los grids en donde se
+      ///posicionaran las naves y salvos
     };
   },
   //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -423,7 +448,7 @@ export default {
       "getPlacedShipsGamePlayer",
       "getPlacedShotsGamePlayer"
     ]),
-    
+
     putShips() {
       this.$store.dispatch("getPlacedShipsGamePlayer", {
         gamePlayerId: this.gamePlayerId,
@@ -561,24 +586,23 @@ export default {
     },
     ///////////////////////////////////////////////////////////////////////////////////////
     dragStart(e) {
-      if(this.positionShips.length==0){
-           const target = e.target;
-      this.counter = 0;
+      if (this.positionShips.length == 0) {
+        const target = e.target;
+        this.counter = 0;
 
-      e.dataTransfer.setData("ship_id", target.id);
+        e.dataTransfer.setData("ship_id", target.id);
 
-      document.getElementById(target.id).classList.remove("visibility");
+        document.getElementById(target.id).classList.remove("visibility");
 
-      // setTimeout(() => {
-      //   target.style.display = "none";
-      // }, 1);
-      }else{
-        console.log('cant move the float anymore')
-        this.draggable=false
+        // setTimeout(() => {
+        //   target.style.display = "none";
+        // }, 1);
+      } else {
+        console.log("cant move the float anymore");
+        this.draggable = false;
         this.dialogNotGood = true;
         this.fireSound1(require("@/assets/banned.mp3"));
       }
-      
     },
     ///////////////////////////////////////////////////////////////////////////////
     orientationShips(ship_id, target) {
@@ -628,7 +652,7 @@ export default {
           this.conditionals(ship_id, target);
         } else {
           this.shipOrientations[name] = !this.shipOrientations[name];
-          document.getElementById(myShip).classList.add('visibility');
+          document.getElementById(myShip).classList.add("visibility");
         }
       } else {
         this.fireSound1(require("@/assets/banned.mp3"));
@@ -638,38 +662,36 @@ export default {
     },
     ///////////////////////////////////////////////////////////////////////////////////////
     triggerer(cell) {
-      if(document.getElementById(cell+"Salvoes").id.length>8){////este length mayor que 8 es la sumatoria de la primera letra y la palabra salvos
+      if (document.getElementById(cell + "Salvoes").id.length > 8) {
+        ////este length mayor que 8 es la sumatoria de la primera letra y la palabra salvos
+        if (this.shootToPositions.length <= 5) {
          if (this.getUserLogged != null || this.getUserLogged != undefined) {
-        if (
-          document
-            .getElementById(cell + "Salvoes")
-            .classList.contains("missSalvos")
-        ) {
-          this.dialogShotAllready = true;
+          if (document.getElementById(cell + "Salvoes").classList.contains("missSalvos")) {
+            this.dialogShotAllready = true;
+            this.fireSound1(require("@/assets/banned.mp3"));
+            console.log("Sorry you already shot to these coordenates");
+          } else if (this.shootToPositions.includes(cell)) {
+              this.shootToPositions.splice(this.shootToPositions.indexOf(cell),1 );
+              document.getElementById(cell + "Salvoes").classList.remove("shots");
+            } else {
+              this.shootToPositions.push(cell);
+              document.getElementById(cell + "Salvoes").classList.add("shots");
+            }
+          
+         }else {
+          console.log("User not identified");
+         }
+        }else {
+          this.dialogWrongTarget = true;
           this.fireSound1(require("@/assets/banned.mp3"));
-          console.log("Sorry you already shot to these coordenates");
-        } else {
-          if (this.shootToPositions.includes(cell)) {
-            this.shootToPositions.splice(
-              this.shootToPositions.indexOf(cell),
-              1
-            );
-            document.getElementById(cell + "Salvoes").classList.remove("shots");
-          } else {
-            this.shootToPositions.push(cell);
-            document.getElementById(cell + "Salvoes").classList.add("shots");
-          }
         }
+
+        
       } else {
-        console.log("User not identified");
+        this.dialogWrongTarget = true;
+        this.fireSound1(require("@/assets/banned.mp3"));
       }
-      }else{
-        this.dialogWrongTarget=true;
-         this.fireSound1(require("@/assets/banned.mp3"));
-      }
-      
-    },
-    
+    }
   },
   //////////////////////////////////////////////////////////////////////////////////////////
   computed: {
@@ -694,12 +716,11 @@ export default {
     this.fetchInterval = setInterval(() => {
       this.fetchingGamePlayerId(this.gamePlayerId);
     }, 3000);
-    
   },
-  beforeDestroy(){
-     clearInterval(this.fetchInterval);
+  beforeDestroy() {
+    clearInterval(this.fetchInterval);
   },
-  
+
   /////////////////////////////////////////////////////////////////////////////////////////////////
   watch: {
     dialog(val) {
@@ -723,7 +744,7 @@ export default {
       setTimeout(() => (this.dialogWrongTarget = false), 2000);
     }, ///return the pop up dialogo falso
     //////////////////////////////////////////////////////////////////////////////////////////////////
-   
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
     getGamePlayerId() {
@@ -736,10 +757,8 @@ export default {
       ) {
         clearInterval(this.fetchInterval);
       }
-      
-      setTimeout(() => {
 
-       
+      setTimeout(() => {
         for (let i = 0; i < this.getGamePlayerId.ship.length; i++) {
           let shipLocation = this.getGamePlayerId.ship[i].ship_location;
           let shipColor = this.getGamePlayerId.ship[i].ship_Type;
@@ -751,7 +770,7 @@ export default {
           //locales que posteriormente seran usadas shipLocation y shipColor especificamente , las cuales acceden dentro
           //del objeto antes mencionado a los apartados de localizacion y tipo de nave(ship_location y ship_type),elementos
           //que se utilizaran para marcar enfatizar o desarrollar elementos dentro del juego.
-           
+
           //  if (shipLocation[0][0] == shipLocation[1][0] && i==0) {
           //     console.log("horizontal");
           //     document.getElementById(shipLocation[i]).innerHTML = "";
@@ -762,12 +781,11 @@ export default {
           //      x.setAttribute("height", "40");
           //      x.style.zIndex =3
           //     document.getElementById(shipLocation[i]).appendChild(x).style.position='absolute'
-              
+
           //   }else if (shipLocation[0][0] != shipLocation[1][0] && i==0) {
           //     console.log("vertical");
           // }
 
-          
           for (let j = 0; j < shipLocation.length; j++) {
             document
               .getElementById(shipLocation[j])
@@ -914,7 +932,6 @@ export default {
             const remover = setTimeout(() => {
               this.destroyedShipBox = [];
             }, 2500);
-
           }
         }
         //Vease que desarrollada la logica de los tres primeros elementos , primero determinandose las posiciones de las
@@ -942,34 +959,33 @@ export default {
 };
 </script>
 <style>
-.state{
-  position:absolute;
-  margin-left:300px;
-  margin-top:450px;
+.state {
+  position: absolute;
+  margin-left: 300px;
+  margin-top: 450px;
 }
 .all {
   z-index: 1;
 }
-.imgState{
- position:absolute;
- margin-left:550px;
- margin-top:150px;
+.imgState {
+  position: absolute;
+  margin-left: 550px;
+  margin-top: 150px;
 }
-.myTurnshotsOpp,.myTurnshots{
+.myTurnshotsOpp,
+.myTurnshots {
   /* display:flex;
   flex-direction:column; */
-  font-size:2rem;
-  position:absolute;
-  text-align:center;
-  color:white
+  font-size: 2rem;
+  position: absolute;
+  text-align: center;
+  color: white;
 }
-.myTurnshotsOpp{
-  margin-left:893px;
-
+.myTurnshotsOpp {
+  margin-left: 893px;
 }
-.myTurnshots{
-  margin-left:300px;
-
+.myTurnshots {
+  margin-left: 300px;
 }
 .leaving {
   position: relative;
@@ -1271,21 +1287,21 @@ export default {
   }
 }
 .Destroyer {
-  background-color:#FF5252;
+  background-color: #ff5252;
 }
 .Carrier {
-  background-color:#FF5252;
+  background-color: #ff5252;
 }
 .Submarine {
-  background-color: #FF5252;
+  background-color: #ff5252;
 }
 .PatrolBoat {
-  background-color: #FF5252;
+  background-color: #ff5252;
   /* visibility:visible;
   background-image:url('../assets/battleshipAboveView.png') */
 }
 .BattleShip {
-  background-color: #FF5252;
+  background-color: #ff5252;
 }
 .destroyedShips {
   width: 70px;
