@@ -768,7 +768,12 @@ export default {
       ) {
         clearInterval(this.fetchInterval);
       }
-
+      if(this.shootToPositions.length>5){
+                this.shootToPositions.splice(
+                this.shootToPositions.indexOf(cell),
+                5);
+      }
+      
       setTimeout(() => {
         for (let i = 0; i < this.getGamePlayerId.ship.length; i++) {
           let shipLocation = this.getGamePlayerId.ship[i].ship_location;
