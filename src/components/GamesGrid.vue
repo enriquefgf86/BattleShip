@@ -669,7 +669,7 @@ export default {
          this.dialogWrongTarget = true;
          this.fireSound1(require("@/assets/banned.mp3"));
        }else{
-        if (this.getUserLogged != null || this.getUserLogged != undefined && !this.shootToPositions.length>5) {
+        if (this.getUserLogged != null || this.getUserLogged != undefined && !this.shootToPositions.length<=5) {
           if (
             document
               .getElementById(cell + "Salvoes")
