@@ -15,11 +15,12 @@
         class="button glowing-button"
         style="background-color:#FF5252;color:white;margin-left:250px;margin-top:40px"
       >No</v-btn>
-    </v-container>import { mapActions, mapGetters, mapState } from "vuex";
+    </v-container>
   </v-container>
 </template>
 
 <script>
+import { mapActions, mapGetters, mapState } from "vuex";
 import Games from "../components/Games";
 import GameDetail from "../views/GameDetail";
 
