@@ -662,7 +662,7 @@ export default {
     },
     ///////////////////////////////////////////////////////////////////////////////////////
     triggerer(cell) {
-      if (this.shootToPositions.length <5) {
+      // if (this.shootToPositions.length <5) {
       if (document.getElementById(cell + "Salvoes").id.length > 8) {
         ////este length mayor que 8 es la sumatoria de la primera letra y la palabra salvos
         
@@ -696,10 +696,10 @@ export default {
             this.dialogWrongTarget = true;
             this.fireSound1(require("@/assets/banned.mp3"));
         }
-      } else {
-        this.dialogWrongTarget = true;
-        this.fireSound1(require("@/assets/banned.mp3"));
-      }
+      // } else {
+      //   this.dialogWrongTarget = true;
+      //   this.fireSound1(require("@/assets/banned.mp3"));
+      // }
     }
   },
   //////////////////////////////////////////////////////////////////////////////////////////
