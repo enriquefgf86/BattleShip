@@ -53,8 +53,8 @@
       </v-toolbar>
 
       <router-view />
-       <img  class='sound' style='width:80px;height:80px' src='./assets/soundButton.png' @click="fireSound(require('./assets/videoplayback.mp4'))"
-   />
+       <!-- <img  class='sound' style='width:80px;height:80px' src='./assets/soundButton.png' @click="fireSound(require('./assets/videoplayback.mp4'))"
+   /> -->
     
   </v-container></div>
 </template>
