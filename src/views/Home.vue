@@ -15,14 +15,14 @@
         class="button glowing-button"
         style="background-color:#FF5252;color:white;margin-left:250px;margin-top:40px"
       >No</v-btn>
-    </v-container>
+    </v-container>import { mapActions, mapGetters, mapState } from "vuex";
   </v-container>
 </template>
 
 <script>
 import Games from "../components/Games";
 import GameDetail from "../views/GameDetail";
-import { mapActions, mapGetters, mapState } from "vuex";
+
 export default {
   name: "home",
   components: {
